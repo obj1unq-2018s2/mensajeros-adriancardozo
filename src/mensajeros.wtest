@@ -1,0 +1,15 @@
+import mensajeros.*
+import destinos.*
+import transportes.*
+test "roberto lleva un paquete en un camion con un acoplado" {
+	camion.cantidadDeAcoplados(1)
+	roberto.peso(90)
+	roberto.transporte(camion)
+	paquete.estaPago(true)
+	assert.equals(500, camion.peso())
+	assert.equals(590, roberto.peso())
+	paquete.destino(laMatrix)
+	assert.that(not paquete.puedeSerEntregadoPor(roberto))
+	paquete.destino(puenteDeBrooklyn)
+	assert.that(paquete.puedeSerEntregadoPor(roberto))
+}
